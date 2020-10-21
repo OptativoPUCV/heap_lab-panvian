@@ -35,11 +35,13 @@ void heap_push(Heap* pq, void* data, int priority){
       aux2=pq->heapArray[aux];
       pq->heapArray[aux]=pq->heapArray[2*aux+2];
       pq->heapArray[2*aux+2]=aux2;
+      aux=2*aux+2;
     }
     else {
       aux2=pq->heapArray[aux];
       pq->heapArray[aux]=pq->heapArray[2*aux+1];
       pq->heapArray[2*aux+1]=aux2;
+      aux=2*aux+1;
     }
   }
 }
