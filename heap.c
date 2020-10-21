@@ -27,7 +27,6 @@ void* heap_top(Heap* pq){
 void heap_push(Heap* pq, void* data, int priority){
 }
 
-
 void heap_pop(Heap* pq){
   int aux=0;
   heapElem aux2;
@@ -38,16 +37,22 @@ void heap_pop(Heap* pq){
   while(pq->heapArray[aux].priority<pq->heapArray[2*aux+1].priority || pq->heapArray[aux].priority<pq->heapArray[2*aux+2].priority) {
     
     if(pq->heapArray[2*aux+1].priority < pq->heapArray[2*aux+2].priority) {
-      aux2=pq->heapArray[aux];
-      pq->heapArray[aux]=pq->heapArray[2*aux+2];
-      pq->heapArray[2*aux+2]=aux2;
+      aux2.priority=pq->heapArray[aux].priority;
+      aux2.data=pq->heapArray[aux].data;
+      pq->heapArray[aux].priority=pq->heapArray[2*aux+2].priority;
+      pq->heapArray[aux].data=pq->heapArray[2*aux+2].data;
+      pq->heapArray[2*aux+2].priority=aux2.priority;
+      pq->heapArray[2*aux+2].data=aux2.data;
       aux=2*aux+2;
     }
     else {
-      aux2=pq->heapArray[aux];
-      pq->heapArray[aux]=pq->heapArray[2*aux+1];
-      pq->heapArray[2*aux+1]=aux2;
-      aux=2*aux+1;
+      aux2.priority=pq->heapArray[aux].priority;
+      aux2.data=pq->heapArray[aux].data;
+      pq->heapArray[aux].priority=pq->heapArray[2*aux+1].priority;
+      pq->heapArray[aux].data=pq->heapArray[2*aux+1].data;
+      pq->heapArray[2*aux+1].priority=aux2.priority;
+      pq->heapArray[2*aux+1].data=aux2.data;
+      aux=2*aux+2;
     }
   }
 }
