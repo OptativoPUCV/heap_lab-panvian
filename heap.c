@@ -39,7 +39,7 @@ void heap_push(Heap* pq, void* data, int priority){
     pq->heapArray[aux]=pq->heapArray[(aux-1)/2];
     pq->heapArray[(aux-1)/2]=aux2;
     aux=(aux-1)/2;
-    if(aux<1) return;
+    if(aux<0) return;
   }
   printf("%d",pq->heapArray[1].priority);
 }
