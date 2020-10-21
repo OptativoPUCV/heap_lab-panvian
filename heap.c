@@ -35,7 +35,7 @@ void heap_pop(Heap* pq){
   //pq->heapArray[pq->size-1]=aux2;
   pq->size--;
   while(pq->heapArray[aux].priority<pq->heapArray[2*aux+1].priority || pq->heapArray[aux].priority<pq->heapArray[2*aux+2].priority) {
-    if(2*aux+1==pq->size || 2*aux+2==pq->size) return;
+    //if(2*aux+1==pq->size || 2*aux+2==pq->size) return;
     if(pq->heapArray[2*aux+1].priority < pq->heapArray[2*aux+2].priority) {
       aux2=pq->heapArray[aux];
       pq->heapArray[aux]=pq->heapArray[2*aux+2];
