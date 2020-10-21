@@ -29,10 +29,12 @@ void heap_push(Heap* pq, void* data, int priority){
 
 
 void heap_pop(Heap* pq){
-  pq->heapArray[0]=pq->heapArray[pq->size-1];
-  pq->size--;
   int aux=0;
   heapElem aux2;
+  aux2=pq->heapArray[0];
+  pq->heapArray[0]=pq->heapArray[pq->size-1];
+  pq->heapArray[pq->size-1]=aux2;
+  pq->size--;
   while(pq->heapArray[aux].priority<pq->heapArray[2*aux+1].priority || pq->heapArray[aux].priority<pq->heapArray[2*aux+2].priority) {
     
     if(pq->heapArray[2*aux+1].priority < pq->heapArray[2*aux+2].priority) {
