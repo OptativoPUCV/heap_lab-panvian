@@ -28,18 +28,18 @@ void heap_push(Heap* pq, void* data, int priority){
   pq->heapArray[0]=pq->heapArray[pq->size];
   pq->size--;
   int aux=0;
-  int aux2=0;  
+  heapElem aux2;
   while(pq->heapArray[aux].priority<pq->heapArray[2*aux+1].priority || pq->heapArray[aux].priority<pq->heapArray[2*aux+2].priority) {
     
     if(pq->heapArray[2*aux+1].priority < pq->heapArray[2*aux+2].priority) {
-      aux2=pq->heapArray[aux].priority;
-      pq->heapArray[aux].priority=pq->heapArray[2*aux+2].priority;
-      pq->heapArray[2*aux+2].priority=aux2;
+      aux2=pq->heapArray[aux];
+      pq->heapArray[aux]=pq->heapArray[2*aux+2];
+      pq->heapArray[2*aux+2]=aux2;
     }
     else {
-      aux2=pq->heapArray[aux].priority;
-      pq->heapArray[aux].priority=pq->heapArray[2*aux+1].priority;
-      pq->heapArray[2*aux+1].priority=aux2;
+      aux2=pq->heapArray[aux];
+      pq->heapArray[aux]=pq->heapArray[2*aux+1];
+      pq->heapArray[2*aux+1]=aux2;
     }
   }
 }
